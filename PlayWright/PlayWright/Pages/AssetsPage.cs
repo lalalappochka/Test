@@ -13,14 +13,39 @@ namespace BybitFramework.Pages
 
         public async Task<AssetsPage> TransferButAsync()
         {
-            await Page.ClickAsync("[@ant-click-animating-without-extra-node='false']");
+            await Page.ClickAsync("button:has-text(\"Transfer\")");
             return this;
         }
         public async Task<AssetsPage> SenderAccountAsync()
         {
-            await Page.Locator(".asset-transfer__account > .asset-transfer__account-wraper").ClickAsync();
+            await Page.Locator(".asset-transfer__account > .asset-transfer__account-wraper").Nth(1).ClickAsync();
             return this;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public async Task<AssetsPage> ChooseSenderAccountAsync()
         {
             await Page.Locator("//div[text()='Спот Аккаунт']").ClickAsync();

@@ -9,11 +9,13 @@ using BybitFramework.Services;
 using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 using NUnit.Framework;
+using PlayWright.Logger;
 
 namespace BybitFramework
 {
-    internal class Test
+    internal class Test : Logging
     {
+        private static IBrowserContext _context;
         private string userEmail = "lalalappochka@gmail.com";
         private string userPassword = "P@ssw0rd";
         private IPage _page;
@@ -21,10 +23,13 @@ namespace BybitFramework
         [OneTimeSetUp]
         public async Task Setup()
         {
-            var playwright = await Playwright.CreateAsync();
+
+        var playwright = await Playwright.CreateAsync();
             var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             { Channel = "chrome", Headless = false });
-            _page = await browser.NewPageAsync();
+            _context = await browser.NewContextAsync(new BrowserNewContextOptions
+            { StorageStatePath = "..\\..\\..\\..\\auth.json" });
+            _page = await _context.NewPageAsync();
             await _page.GotoAsync(pageURL);
         }
 
@@ -33,8 +38,8 @@ namespace BybitFramework
         public async Task ByBitTestTransfer(double amount)
         {
             FirstPage firstPage = new FirstPage(_page);
-            LoginPage loginPage = await firstPage.MoveToLoginPageAsync();
-            firstPage = await loginPage.LoginAsAsync(userEmail, userPassword);
+            //LoginPage loginPage = await firstPage.MoveToLoginPageAsync();
+            //firstPage = await loginPage.LoginAsAsync(userEmail, userPassword);
             AssetsPage assetsPage = await firstPage.MoveToAssestsPageAsync();
 
             AssetTransfer assetTransfer = new AssetTransfer();

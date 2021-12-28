@@ -9,6 +9,7 @@ namespace BybitFramework.Pages
 {
     internal class LoginPage : BasePage
     {
+
         public LoginPage(IPage page) : base(page) { }
 
         public async Task<FirstPage> LoginAsAsync(string email, string password)

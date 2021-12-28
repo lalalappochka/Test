@@ -26,8 +26,9 @@ namespace BybitFramework.Pages
         public async Task<AssetsPage> MoveToAssestsPageAsync()
         {
             await Page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
-            await Page.ClickAsync("//span[text()='Assets']");
-            await Page.ClickAsync("//*[text()='Spot Account']");
+            //await Page.ClickAsync("//span[text()='Assets']");
+            //await Page.ClickAsync("//*[text()='Spot Account']");
+            await Page.GotoAsync(url: "https://testnet.bybit.com/user/assets/home");
             return new AssetsPage(Page);
         }
     }
