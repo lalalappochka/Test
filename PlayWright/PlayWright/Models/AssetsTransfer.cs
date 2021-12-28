@@ -8,7 +8,7 @@ namespace BybitFramework.Models
 {
     internal class AssetTransfer
     {
-        public int CashBeforeTransferOperation { get; set; }
-        public int CashAfterTransferOperation { get; set; }
+        public double CashBeforeTransferOperation { get; set; }
+        public double CashAfterTransferOperation { get; set; }
     }
 }

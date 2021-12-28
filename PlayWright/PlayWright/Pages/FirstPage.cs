@@ -19,7 +19,8 @@ namespace BybitFramework.Pages
         }
         public async Task<MarketPage> MoveToMarketPageAsync()
         {
-            await Page.ClickAsync(".header__nav-item-markets");
+            await Page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
+            await Page.GotoAsync("https://testnet.bybit.com/data/markets/spot");
             return new MarketPage(Page);
         }
 

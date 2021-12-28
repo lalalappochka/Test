@@ -9,9 +9,11 @@ namespace BybitFramework.Services
 {
     internal static class MarketPageExtension
     {
-        //public static Task ChooseFavouriteOperation(this MarketPage page)
-        //{
-
-        //}
+        public static async Task ChooseFavouriteOperation(this MarketPage page)
+        {
+            await page.ChooseSpotAsync().Result.AddToFavButAsync().Result.ChooseFavSectionAsync()
+                .Result.ChooseUnderFavSectionSpotAsync().Result.CheckMarketsAsync();
+           
+        }
     }
 }
