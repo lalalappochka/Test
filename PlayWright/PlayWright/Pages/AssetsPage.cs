@@ -54,7 +54,7 @@ namespace BybitFramework.Pages
         }
         public async Task<AssetsPage> ConfirmAsync()
         {
-            await Page.ClickAsync("by-button--contained");
+            await Page.ClickAsync(".by-button");
             return this;
         }
 
