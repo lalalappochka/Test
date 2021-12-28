@@ -1,4 +1,5 @@
 ﻿using Microsoft.Playwright;
+using PlayWright.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,10 +29,10 @@ namespace BybitFramework.Pages
             return this;
         }
 
-        //public async Task<AssetsPage> ReceiveAccountAsync()
-        //{
-        //    return this;
-        //}
+        public async Task<AssetsPage> ReceiveAccountAsync()
+        {
+            return this;
+        }
         public async Task<AssetsPage> ChooseReceiverAccountAsync()
         {
             await Page.Locator("//div[text()='Derivatives Account']").ClickAsync();
@@ -43,10 +44,10 @@ namespace BybitFramework.Pages
             return this;
         }
 
-        //public async Task<AssetsPage> ChooseCoinTypeAsync()
-        //{
-        //    return this;
-        //}
+        public async Task<AssetsPage> ChooseCoinTypeAsync()
+        {
+            return this;
+        }
         public async Task<AssetsPage> ChooseTransferableAmountAsync(double amount)
         {
             await Page.FillAsync(".by-input__inner", amount.ToString());
@@ -54,15 +55,21 @@ namespace BybitFramework.Pages
         }
         public async Task<AssetsPage> ConfirmAsync()
         {
-            await Page.ClickAsync("by-button--contained");
+            await Page.ClickAsync(".by-button");
             return this;
         }
 
-        //public async Task<double> CashAmountAfterTransferAsync()
-        //{
-
-        //    return 
-
-        //}
+        public async Task<double> GetCash(TransferSideSelection account)
+        {
+            switch (account)
+            {
+                case TransferSideSelection.SENDER:
+                    return Convert.ToDouble(await Page.Locator(".asset-transfer__account-value").Nth(1).InnerTextAsync());
+                case TransferSideSelection.RECIEVER:
+                    return Convert.ToDouble(await Page.Locator(".asset-transfer__account-value").Nth(2).InnerTextAsync());
+                default:
+                    return 0.0;
+            }
+        }
     }
 }

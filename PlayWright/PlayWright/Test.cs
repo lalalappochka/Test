@@ -9,6 +9,7 @@ using BybitFramework.Services;
 using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 using NUnit.Framework;
+using PlayWright.Helpers;
 using PlayWright.Logger;
 
 namespace BybitFramework
@@ -34,22 +35,18 @@ namespace BybitFramework
         }
 
         [Test]
-        [TestCase(10)]
+        [TestCase(0.1)]
         public async Task ByBitTestTransfer(double amount)
         {
             FirstPage firstPage = new FirstPage(_page);
             //LoginPage loginPage = await firstPage.MoveToLoginPageAsync();
             //firstPage = await loginPage.LoginAsAsync(userEmail, userPassword);
             AssetsPage assetsPage = await firstPage.MoveToAssestsPageAsync();
-
             AssetTransfer assetTransfer = new AssetTransfer();
-            ////assetTransfer.CashBeforeTransferOperation = assetsPage.CashBeforeTransferAsync();
+            assetTransfer.CashBeforeTransferOperation = await assetsPage.GetCash(TransferSideSelection.RECIEVER);
             await assetsPage.TransferOperationAsync(amount);
-            ////assetTransfer.CashAfterTransferOperation = assetsPage.CashAmountAfterTransferAsync();
-
-            //Assert.AreEqual(assetTransfer.CashBeforeTransferOperation, assetTransfer.CashAfterTransferOperation - amount);
-
-
+            assetTransfer.CashAfterTransferOperation = await assetsPage.GetCash(TransferSideSelection.RECIEVER);
+            Assert.AreEqual(assetTransfer.CashBeforeTransferOperation, assetTransfer.CashAfterTransferOperation - amount);
         }
 
     }
