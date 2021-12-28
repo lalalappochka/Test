@@ -22,33 +22,9 @@ namespace BybitFramework.Pages
             return this;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public async Task<AssetsPage> ChooseSenderAccountAsync()
         {
-            await Page.Locator("//div[text()='Спот Аккаунт']").ClickAsync();
+            await Page.Locator("//div[text()='Spot Account']").ClickAsync();
             return this;
         }
 

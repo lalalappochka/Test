@@ -12,11 +12,11 @@ namespace BybitFramework.Services
         public static async Task TransferOperationAsync(this AssetsPage page, double amount)
         {
             await page.TransferButAsync();
-            await page.SenderAccountAsync();
-            await page.ChooseSenderAccountAsync();
+            //await page.SenderAccountAsync();
+            //await page.ChooseSenderAccountAsync();
             //await page.ReceiveAccountAsync();
-            await page.ChooseReceiverAccountAsync();
-            await page.OpenChooseCoinTypeAsync();
+            //await page.ChooseReceiverAccountAsync();
+            //await page.OpenChooseCoinTypeAsync();
             //await page.ChooseCoinTypeAsync();
             await page.ChooseTransferableAmountAsync(amount);
             await page.ConfirmAsync();
