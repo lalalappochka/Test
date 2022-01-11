@@ -49,5 +49,14 @@ namespace BybitFramework
             Assert.AreEqual(assetTransfer.CashBeforeTransferOperation, assetTransfer.CashAfterTransferOperation - amount);
         }
 
+        [Test]
+        public async Task AddToFavourites()
+        {
+            FirstPage firstPage = new FirstPage(_page);
+            MarketPage marketPage = await firstPage.MoveToMarketPageAsync();
+
+
+        }
+
     }
 }

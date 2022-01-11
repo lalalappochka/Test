@@ -11,7 +11,6 @@ namespace BybitFramework.Pages
     {
         public FirstPage(IPage page) : base(page) { }
 
-
         public async Task<LoginPage> MoveToLoginPageAsync()
         {
             await Page.ClickAsync(".header-login");
@@ -27,8 +26,6 @@ namespace BybitFramework.Pages
         public async Task<AssetsPage> MoveToAssestsPageAsync()
         {
             await Page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
-            //await Page.ClickAsync("//span[text()='Assets']");
-            //await Page.ClickAsync("//*[text()='Spot Account']");
             await Page.GotoAsync(url: "https://testnet.bybit.com/user/assets/home");
             return new AssetsPage(Page);
         }
