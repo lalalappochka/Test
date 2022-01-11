@@ -55,7 +55,16 @@ namespace BybitFramework
             FirstPage firstPage = new FirstPage(_page);
             MarketPage marketPage = await firstPage.MoveToMarketPageAsync();
 
+        }
 
+        [Test]
+        public async Task ChangeDerivative()
+        {
+            FirstPage firstPage = new FirstPage(_page);
+            SpotPage spotPage = await firstPage.MoveToSpotPageAsync();
+            await spotPage.FindDropdownDerivativesAsync();
+            await spotPage.ChooseNewDerivativeAsync();
+            Assert.AreEqual();
         }
 
     }
