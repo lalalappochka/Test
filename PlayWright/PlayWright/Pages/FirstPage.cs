@@ -9,11 +9,12 @@ namespace BybitFramework.Pages
 {
     internal class FirstPage : BasePage
     {
+        public const string ChooseHeaderFieldLogin = ".header-login";
         public FirstPage(IPage page) : base(page) { }
 
         public async Task<LoginPage> MoveToLoginPageAsync()
         {
-            await Page.ClickAsync(".header-login");
+            await Page.ClickAsync(ChooseHeaderFieldLogin);
             return new LoginPage(Page);
         }
         public async Task<MarketPage> MoveToMarketPageAsync()
@@ -22,7 +23,6 @@ namespace BybitFramework.Pages
             await Page.GotoAsync("https://testnet.bybit.com/data/markets/spot");
             return new MarketPage(Page);
         }
-
         public async Task<AssetsPage> MoveToAssestsPageAsync()
         {
             await Page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
