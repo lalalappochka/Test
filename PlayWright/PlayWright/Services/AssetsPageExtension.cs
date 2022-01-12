@@ -11,7 +11,6 @@ namespace BybitFramework.Services
     {
         public static async Task TransferOperationAsync(this AssetsPage page, double amount)
         {
-            await page.TransferButAsync();
             await page.SenderAccountAsync();
             await page.ChooseSenderAccountAsync();
             await page.ReceiveAccountAsync();

@@ -39,9 +39,7 @@ namespace BybitFramework
         public async Task ByBitTestTransfer(double amount)
         {
             FirstPage firstPage = new FirstPage(_page);
-            //LoginPage loginPage = await firstPage.MoveToLoginPageAsync();
-            //firstPage = await loginPage.LoginAsAsync(userEmail, userPassword);
-            AssetsPage assetsPage = await firstPage.MoveToAssestsPageAsync();
+            AssetsPage assetsPage = await firstPage.MoveToAssestsPageAsync().Result.TransferButAsync();
             AssetTransfer assetTransfer = new AssetTransfer();
             assetTransfer.CashBeforeTransferOperation = await assetsPage.GetCash(TransferSideSelection.RECIEVER);
             await assetsPage.TransferOperationAsync(amount);
@@ -64,7 +62,7 @@ namespace BybitFramework
             SpotPage spotPage = await firstPage.MoveToSpotPageAsync();
             await spotPage.FindDropdownDerivativesAsync();
             await spotPage.ChooseNewDerivativeAsync();
-            Assert.AreEqual();
+            //Assert.AreEqual();
         }
 
     }

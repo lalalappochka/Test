@@ -73,7 +73,7 @@ namespace BybitFramework.Pages
                 case TransferSideSelection.SENDER:
                     return Convert.ToDouble(await Page.Locator(".asset-transfer__account-value").Nth(1).InnerTextAsync());
                 case TransferSideSelection.RECIEVER:
-                    return Convert.ToDouble(await Page.Locator(".asset-transfer__account-value").Nth(2).InnerTextAsync());
+                    return Convert.ToDouble(await Page.Locator(".asset-transfer__account-value").Nth(1).InnerTextAsync());
                 default:
                     return 0.0;
             }
