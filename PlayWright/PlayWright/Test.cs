@@ -84,7 +84,26 @@ namespace BybitFramework
             //Assert.AreEqual(checksumm, lastconvert);
         }
 
-        //[Test]
-        //public async Task 
+         [Test]
+         [TestCase(0.2)]
+         public async Task BuyBTC(double amount)
+        {
+            FirstPage firstPage = new FirstPage(_page);
+            SpotPage spotPage = await firstPage.MoveToSpotPageAsync();
+            //await spotPage.ByuingBTCOperation(amount);
+            //double quantity = await spotPage.CheckHistoryAmountAsync();
+            //Assert.AreEqual(amount, quantity);
+        }
+
+        [Test]
+        [TestCase(0.2)]
+        public async Task SellBTC(double amount)
+        {
+            FirstPage firstPage = new FirstPage(_page);
+            SpotPage spotPage = await firstPage.MoveToSpotPageAsync();
+            //await spotPage.SellingBTCOperation(amount);
+            //double quantity = await spotPage.CheckHistoryAmountAsync();
+            //Assert.AreEqual(amount, quantity);
+        }
     }
 }
