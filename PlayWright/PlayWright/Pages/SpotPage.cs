@@ -15,8 +15,10 @@ namespace BybitFramework.Pages
         public const string CurrentDerivative = "//*[@class='icon-currency']/following-sibling::span";
         public const string QuantityFieldForBuying = ".sfe-input-left__inner";
         public const string ConfirmBuyingButton = "//span[text()='Buy BTC']";
+        public const string ConfirmSellButton = "//span[text()='Sell BTC']";
         public const string ConfirmLimitBuyWindow = ".el-button > .el-button--main > .is-plain >.flex-1";
         public const string TradeHistoryBuy = "//span[text()='Buy']";
+        public const string SellSection = ".sell > .flex-1";
 
         public SpotPage(IPage page) : base(page) { }
 
@@ -60,17 +62,26 @@ namespace BybitFramework.Pages
             return this;
         }
 
-        public async Task<SpotPage> ConfirmLimitBuyAsync()
+        public async Task<SpotPage> ConfirmLimitsAsync()
         {
             await Page.Locator(ConfirmLimitBuyWindow).ClickAsync();
             return this;
         }
 
-        public async Task<string> CheckHistoryAmountAsync()
+        public async Task<double> CheckHistoryAmountAsync()
         {
-            return await Page.Locator(TradeHistoryBuy).Nth(10).InnerTextAsync();
+            return Convert.ToDouble(Page.Locator(TradeHistoryBuy).Nth(10).InnerTextAsync());
         }
 
-
+        public async Task<SpotPage> ChooseSellSectionAsync()
+        {
+            await Page.Locator(SellSection).ClickAsync();
+            return this;
+        }
+        public async Task<SpotPage> ConfirmBTCSellingAsync()
+        {
+            await Page.Locator(ConfirmSellButton).ClickAsync();
+            return this;
+        }
     }
 }
