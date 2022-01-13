@@ -52,11 +52,11 @@ namespace BybitFramework
         {
             FirstPage firstPage = new FirstPage(_page);
             MarketPage marketPage = await firstPage.MoveToMarketPageAsync();
-            await marketPage.ChooseSpotAsync();
-            string findSpot = await marketPage.FindSpotToAddAsync();
-            await marketPage.ChooseFavouriteOperation();
-            string addedSpot = await marketPage.CheckMarketsAsync();
-            Assert.AreEqual(findSpot, addedSpot);
+            //await marketPage.ChooseSpotAsync();
+            //string findSpot = await marketPage.FindSpotToAddAsync();
+            //await marketPage.ChooseFavouriteOperation();
+            //string addedSpot = await marketPage.CheckMarketsAsync();
+            //Assert.AreEqual(findSpot, addedSpot);
 
         }
 
@@ -83,5 +83,8 @@ namespace BybitFramework
             //string lastconvert = await exchangePage.LastConvertingAsync();
             //Assert.AreEqual(checksumm, lastconvert);
         }
+
+        //[Test]
+        //public async Task 
     }
 }

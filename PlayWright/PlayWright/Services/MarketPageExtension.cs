@@ -11,9 +11,9 @@ namespace BybitFramework.Services
     {
         public static async Task ChooseFavouriteOperation(this MarketPage page)
         {
-            await page.ChooseSpotAsync().Result.AddToFavButAsync().Result.ChooseFavSectionAsync()
-                .Result.ChooseUnderFavSectionSpotAsync().Result.CheckMarketsAsync();
-           
+            await page.AddToFavButAsync();
+            await page.ChooseFavSectionAsync();
+            await page.ChooseUnderFavSectionSpotAsync();
         }
     }
 }
