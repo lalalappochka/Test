@@ -13,13 +13,13 @@ namespace BybitFramework.Pages
 
         public async Task<MarketPage> ChooseSpotAsync()
         {
-            await Page.ClickAsync("text = FavoritesDerivativesSpotNEWReferences >> :nth-match(div, 3)");
+            await Page.ClickAsync("text = FavoritesDerivativesSpotNEWReferences");
             return this;
         }
 
         public async Task<MarketPage> AddToFavButAsync()
         {
-            await Page.ClickAsync("text=ETH/USDT3,928.69-1.78%4,000.0025.00229.86K(USDT)Trade >> img");
+            await Page.ClickAsync("text=ETH/USDT3 >> img");
             return this;
         }
 
@@ -37,7 +37,7 @@ namespace BybitFramework.Pages
 
         public async Task<string> CheckMarketsAsync()
         {
-           string result = await Page.TextContentAsync("text=ETH/USDT3,928.69-1.78%4,000.0025.00229.86K(USDT)Trade");
+           string result = await Page.TextContentAsync("text=ETH/USDT3");
            return result;
         }
 

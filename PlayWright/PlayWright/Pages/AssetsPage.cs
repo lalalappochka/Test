@@ -17,6 +17,7 @@ namespace BybitFramework.Pages
         public const string CoinDropdownOpen = ".by-select-adv-selection-search-input";
         public const string TransferableField = ".by-input__inner";
         public const string ConfirmButton = ".by-button";
+        public const string BalanceCash = ".asset-transfer__account-value";
         public AssetsPage(IPage page) : base(page) { }
 
         public async Task<AssetsPage> TransferButAsync()
@@ -71,9 +72,9 @@ namespace BybitFramework.Pages
             switch (account)
             {
                 case TransferSideSelection.SENDER:
-                    return Convert.ToDouble(await Page.Locator(".asset-transfer__account-value").Nth(1).InnerTextAsync());
+                    return Convert.ToDouble( Page.Locator(BalanceCash).Nth(0).InnerTextAsync().Result.Substring(0,7));
                 case TransferSideSelection.RECIEVER:
-                    return Convert.ToDouble(await Page.Locator(".asset-transfer__account-value").Nth(1).InnerTextAsync());
+                    return Convert.ToDouble( Page.Locator(BalanceCash).Nth(0).InnerTextAsync().Result.Substring(0,7));
                 default:
                     return 0.0;
             }

@@ -17,20 +17,24 @@ namespace BybitFramework.Pages
 
         public async Task<SpotPage> FindDropdownDerivativesAsync()
         {
-            await Page.HoverAsync(DropdownDerivatives);
+            await Page.HoverAsync(CurrentDerivative);
             return this;
+        }
+
+        public async Task<string> FindNewDerivativeAsync( )
+        {
+            return await Page.Locator(NewDerivative).InnerTextAsync();  
         }
 
         public async Task<SpotPage> ChooseNewDerivativeAsync()
         {
-            await Page.ClickAsync(NewDerivative);
+            await Page.Locator(NewDerivative).ClickAsync();
             return this;
         }
 
         public async Task<string> GetCurrentDerivativeAsync()
         {
-            return Convert.ToString(Page.TextContentAsync(CurrentDerivative));
-
+            return await Page.Locator(CurrentDerivative).InnerTextAsync();
         }
 
     }
